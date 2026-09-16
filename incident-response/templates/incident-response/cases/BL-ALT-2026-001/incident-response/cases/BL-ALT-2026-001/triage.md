@@ -9,15 +9,15 @@
 
 | Field | Value |
 |---|---|
-| **Alert ID** | BL-ALT-YYYY-### |
-| **Alert Name** | |
-| **Analyst** | |
-| **Date Opened** | YYYY-MM-DD |
-| **Detection Time** | YYYY-MM-DD HH:MM TZ |
-| **Detection Source** | SIEM / EDR / IDS / Firewall / User Report / Other |
-| **Severity** | Informational / Low / Medium / High / Critical |
-| **Priority** | P4 / P3 / P2 / P1 |
-| **Status** | New / Investigating / Escalated / Resolved / Closed |
+| **Alert ID** | BL-ALT-2026-001 |
+| **Alert Name** | Multiple Failed Logon Attempts  |
+| **Analyst** | Andy Vega |
+| **Date Opened** | 2026-09-15 |
+| **Detection Time** | 2026-09-15 00:33:06 CST |
+| **Detection Source** | Windows Security Event log  |
+| **Severity** |  Low  |
+| **Priority** | P4 |
+| **Status** | Investigating  |
 
 ---
 
@@ -25,11 +25,13 @@
 
 ### Description
 
-Briefly describe what triggered the alert.
+Three Windows Security Event ID 4625 events were observed within approximately 20 seconds for the local account `andyv`.
+
+The events indicate failed authentication attempts caused by an incorrect password.
 
 ### Detection Logic
 
-Document the rule, query, signature, or behavior that generated the alert.
+Manual review of Windows Security Event Logs filtered for Event ID 4625.
 
 ```text
 Detection rule / query / signature:
@@ -37,8 +39,9 @@ Detection rule / query / signature:
 
 ### Initial Context
 
-Explain why this activity may represent a security concern.
-
+Three Faild authentication attempts occurred within a short time period.
+All observed events originated from the IPv6 loopback address (::1), indicating local authentication activity .No evidence of a remote intrusion attempt has been indentified at this stage
+Aditional authentification events were reviewed to determine whether the failed logons were associated with suspicious activity.
 ---
 
 ## 3. Affected Entities
